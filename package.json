@@ -1,0 +1,19 @@
+{
+  "name": "testexpress",
+  "version": "1.0.0",
+  "description": "Test express routes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deadlybutter/testexpress.git"
+  },
+  "author": "Joe Kent <hey@joekent.me> (joekent.me)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/deadlybutter/testexpress/issues"
+  },
+  "homepage": "https://github.com/deadlybutter/testexpress#readme"
+}
