@@ -16,7 +16,7 @@
     "url": "https://github.com/deadlybutter/testexpress/issues"
   },
   "homepage": "https://github.com/deadlybutter/testexpress#readme",
-  "dependencies": {
+  "devDependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.14.0"
   }
