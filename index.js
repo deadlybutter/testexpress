@@ -28,34 +28,34 @@ function makeResponseObject(done) {
   }
 }
 
+/**
+ * Create a base request object for Express to interpret.
+ * @param  {object} properties Object containing all of the properties to set.
+ *                             {required|string} url     - Url to hit. eg: /api/v1/get
+ *                             {required|string} method  - GET, POST, etc
+ *                             {optional|object} headers - Headers to send. eg: {'x-api-key': '123abc'}
+ *                             {optional|data}   body    - Data to send.
+ * @return {object}
+ */
+function makeRequestObject(properties) {
+  return {
+    url: properties.url || '/',
+    method: properties.method || 'get',
+    headers: properties.headers || {},
+    body: properties.body || {}
+  };
+}
+
 module.exports = {
   /**
-   * Create a base request object for Express to interpret.
-   * @param  {object} properties Object containing all of the properties to set.
-   *                             {required|string} url     - Url to hit. eg: /api/v1/get
-   *                             {required|string} method  - GET, POST, etc
-   *                             {optional|object} headers - Headers to send. eg: {'x-api-key': '123abc'}
-   *                             {optional|data}   body    - Data to send.
-   * @return {object}
-   */
-  makeRequestObject: function(properties) {
-    return {
-      url: properties.url || '/',
-      method: properties.method || 'get',
-      headers: properties.headers || {},
-      body: properties.body || {}
-    }
-  },
-
-  /**
-   * Test the given request object again
-   * @param  {object} app Express app.
-   * @param  {[type]} req Request object constructed with makeRequestObject().
+   * Test the given request properties against the app.
+   * @param  {object} app        Express app.
+   * @param  {object} properties Request properties to test for.
    * @return {Promise}
    */
-  testRequestObject: function(app, req) {
+  request: function(app, properties) {
     return new Promise(function(resolve, reject) {
-      app.handle(req, makeResponseObject(resolve), reject);
+      app.handle(makeRequestObject(properties), makeResponseObject(resolve), reject);
     });
   }
 }
